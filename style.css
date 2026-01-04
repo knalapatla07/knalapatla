@@ -743,6 +743,16 @@ footer {
     color: var(--slate);
 }
 
+.visit-counter {
+    margin-top: 12px;
+    color: var(--light-slate);
+}
+
+.visit-count {
+    color: var(--green);
+    font-weight: 600;
+}
+
 /* Resume Section */
 .resume-card {
     background-color: rgba(17, 34, 64, 0.55);
