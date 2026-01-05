@@ -364,7 +364,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: clamp(90px, 12vh, 140px);
+    padding-top: calc(clamp(90px, 12vh, 140px) + env(safe-area-inset-top));
     padding-bottom: 100px;
 }
 .hero .intro-text {
@@ -990,6 +990,8 @@ footer {
     }
 
     .hero {
+        justify-content: flex-start;
+        padding-top: calc(clamp(110px, 16vh, 160px) + env(safe-area-inset-top));
         padding-bottom: 60px;
     }
 }
