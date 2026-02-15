@@ -404,6 +404,31 @@ nav {
     flex-wrap: wrap;
 }
 
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hero-stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+}
+.hero-stat-label {
+    font-size: 0.75rem;
+    color: var(--light-slate);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* General Section Styles */
 .section-container {
     padding-top: 100px;
@@ -530,7 +555,7 @@ nav {
 /* Tech Stack */
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--spacing-lg);
 }
 
@@ -567,36 +592,100 @@ nav {
     line-height: 1.2;
 }
 
-/* Experience Section */
-.job {
-    margin-bottom: 25px;
+/* Experience Timeline */
+.timeline {
+    position: relative;
 }
-.job h3 {
+.timeline-item {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 20px;
+    padding-bottom: 40px;
+    position: relative;
+}
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+.timeline-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 24px;
+    bottom: 0;
+    width: 2px;
+    background: var(--lightest-navy);
+}
+.timeline-marker {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    background: var(--navy);
+    margin-top: 4px;
+    z-index: 1;
+    flex-shrink: 0;
+}
+.timeline-marker.active {
+    background: var(--green);
+    box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.15);
+    animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.15); }
+    50% { box-shadow: 0 0 0 8px rgba(100, 255, 218, 0.08); }
+}
+.timeline-date {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--green);
+    background: rgba(100, 255, 218, 0.08);
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+.timeline-body h3 {
     font-size: 1.2rem;
     color: var(--lightest-slate);
     margin-bottom: 5px;
 }
-.job h3 .company {
+.timeline-body h3 .company {
     color: var(--green);
 }
-.job .job-duration {
+.timeline-location {
     font-size: 0.8rem;
     color: var(--light-slate);
     margin-bottom: 15px;
 }
-.job ul {
+.timeline-body ul {
     list-style: none;
 }
-.job li {
+.timeline-body li {
     position: relative;
     padding-left: 20px;
     margin-bottom: 10px;
 }
-.job li::before {
+.timeline-body li::before {
     content: "▹";
     position: absolute;
     left: 0;
     color: var(--green);
+}
+
+/* Mobile timeline adjustments */
+@media (max-width: 480px) {
+    .timeline-item {
+        grid-template-columns: 14px 1fr;
+        gap: 14px;
+    }
+    .timeline-marker {
+        width: 14px;
+        height: 14px;
+    }
+    .timeline-item:not(:last-child)::before {
+        left: 6px;
+    }
 }
 
 /* Projects Section */
@@ -747,14 +836,78 @@ footer {
     color: var(--slate);
 }
 
-.visit-counter {
-    margin-top: 12px;
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 12px;
+}
+.footer-links a {
     color: var(--light-slate);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color var(--transition-default);
+}
+.footer-links a:hover {
+    color: var(--green);
 }
 
-.visit-count {
+/* Certifications Section */
+.certs-grid {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.cert-card {
+    flex: 1;
+    min-width: 220px;
+    background: rgba(17, 34, 64, 0.55);
+    border: 1px solid var(--lightest-navy);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    transition: transform var(--transition-default), box-shadow var(--transition-default);
+}
+.cert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+}
+.cert-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
     color: var(--green);
+}
+.cert-icon svg {
+    width: 100%;
+    height: 100%;
+}
+.cert-name {
+    font-size: 1.1rem;
+    color: var(--lightest-slate);
+    margin-bottom: 6px;
+}
+.cert-issuer {
+    font-size: 0.8rem;
+    color: var(--light-slate);
+    margin-bottom: 10px;
+}
+.cert-badge {
+    display: inline-block;
+    font-size: 0.7rem;
     font-weight: 600;
+    color: var(--green);
+    border: 1px solid rgba(100, 255, 218, 0.35);
+    padding: 2px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+.cert-detail {
+    font-size: 0.78rem;
+    color: var(--slate);
+    line-height: 1.5;
 }
 
 /* Resume Section */
