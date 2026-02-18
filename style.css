@@ -31,6 +31,7 @@
     --transition-fast: 0.2s ease-in-out;
     --transition-medium: 0.3s ease-in-out;
     --transition-slow: 0.6s ease-out;
+    --transition-default: 0.3s ease-in-out;
 
     /* Z-index */
     --z-header: 100;
@@ -544,12 +545,7 @@ nav {
     position: relative;
     z-index: 2;
     display: block;
-    filter: grayscale(50%);
-    transition: filter var(--transition-fast);
-}
-
-.about-image img:hover {
-    filter: grayscale(0%);
+    filter: grayscale(0%) brightness(1.08);
 }
 
 /* Tech Stack */
@@ -665,6 +661,8 @@ nav {
     position: relative;
     padding-left: 20px;
     margin-bottom: 10px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 .timeline-body li::before {
     content: "▹";
@@ -685,6 +683,10 @@ nav {
     }
     .timeline-item:not(:last-child)::before {
         left: 6px;
+    }
+
+    .timeline-body li {
+        text-align: left;
     }
 }
 
@@ -734,6 +736,12 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     gap: var(--spacing-lg);
+}
+
+.projects-empty {
+    margin-top: var(--spacing-lg);
+    color: var(--light-slate);
+    font-size: var(--font-size-sm);
 }
 
 .project-card {

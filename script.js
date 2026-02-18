@@ -39,17 +39,37 @@ const initMobileNav = () => {
 
     if (!toggleButton || !navMenu) return;
 
-    const closeMenu = () => {
+    if (!navMenu.hasAttribute('tabindex')) {
+        navMenu.setAttribute('tabindex', '-1');
+    }
+
+    let lastFocusedElement = null;
+
+    const getFocusableMenuElements = () =>
+        Array.from(navMenu.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')).filter(
+            (el) => el instanceof HTMLElement
+        );
+
+    const closeMenu = (restoreFocus = false) => {
         document.body.classList.remove('nav-open');
         toggleButton.setAttribute('aria-expanded', 'false');
         toggleButton.setAttribute('aria-label', 'Open menu');
+        if (restoreFocus && lastFocusedElement instanceof HTMLElement) {
+            lastFocusedElement.focus({ preventScroll: true });
+        }
     };
 
     const openMenu = () => {
+        lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         document.body.classList.add('nav-open');
         toggleButton.setAttribute('aria-expanded', 'true');
         toggleButton.setAttribute('aria-label', 'Close menu');
-        navMenu.querySelector('a')?.focus({ preventScroll: true });
+        const firstFocusable = getFocusableMenuElements()[0];
+        if (firstFocusable instanceof HTMLElement) {
+            firstFocusable.focus({ preventScroll: true });
+        } else {
+            navMenu.focus({ preventScroll: true });
+        }
     };
 
     toggleButton.addEventListener('click', () => {
@@ -63,7 +83,34 @@ const initMobileNav = () => {
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
+        if (!document.body.classList.contains('nav-open')) return;
+
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            closeMenu(true);
+            return;
+        }
+
+        if (e.key !== 'Tab') return;
+
+        const focusable = getFocusableMenuElements();
+        if (focusable.length === 0) {
+            e.preventDefault();
+            navMenu.focus({ preventScroll: true });
+            return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+
+        if (e.shiftKey && active === first) {
+            e.preventDefault();
+            last.focus({ preventScroll: true });
+        } else if (!e.shiftKey && active === last) {
+            e.preventDefault();
+            first.focus({ preventScroll: true });
+        }
     });
 };
 
@@ -194,6 +241,7 @@ const initActiveSectionNav = () => {
 const initProjectsSearch = () => {
     const input = document.getElementById('projects-search');
     const count = document.querySelector('.projects-count');
+    const emptyState = document.querySelector('.projects-empty');
     const cards = Array.from(document.querySelectorAll('.projects-grid .project-card'));
 
     if (!(input instanceof HTMLInputElement) || cards.length === 0) return;
@@ -207,6 +255,7 @@ const initProjectsSearch = () => {
 
     const applyFilter = () => {
         const query = normalized(input.value);
+        const rawQuery = input.value.trim();
         let visibleCount = 0;
 
         cards.forEach((card) => {
@@ -217,6 +266,16 @@ const initProjectsSearch = () => {
         });
 
         updateCount(visibleCount);
+
+        if (emptyState instanceof HTMLElement) {
+            const shouldShowEmptyState = visibleCount === 0;
+            emptyState.hidden = !shouldShowEmptyState;
+            if (shouldShowEmptyState && rawQuery.length > 0) {
+                emptyState.textContent = `No achievements found for "${rawQuery}".`;
+            } else {
+                emptyState.textContent = 'No achievements found.';
+            }
+        }
     };
 
     let rafId = 0;
@@ -287,9 +346,7 @@ const initResumeModal = () => {
             e.preventDefault();
             const href = el.getAttribute('href');
             if (!href) return;
-            open(href).then((ok) => {
-                if (ok) return;
-            });
+            open(href);
         });
     });
 };
