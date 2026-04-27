@@ -2,3 +2,5 @@
 ql_out/
 redact_phone_from_docx.py
 .DS_Store
+.kiro/*
+.kiro
