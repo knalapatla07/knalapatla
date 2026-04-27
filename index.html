@@ -176,7 +176,7 @@
                                 <li>Migrated critical production workloads from ECS to EKS using phased traffic shifting. zero downtime across 30+ services, and teams got a consistent Kubernetes deployment model.</li>
                                 <li>Non-prod environments ran 24/7 at full capacity. I built scheduled scaling jobs that drop instance counts to minimum overnight and weekends, saving thousands per month.</li>
                                 <li>Recurring incidents disrupted on-call rotations. I introduced structured postmortems and permanent root-cause fixes, reducing repeat incidents by 40%.</li>
-                                <li>HAProxy rollouts took 45 minutes of manual SSH and config edits per change. I built a GitHub Actions pipeline that validates configs, deploys to EC2, and handles cookie-based sticky sessions, turning each rollout into a single PR merge.</li>
+                                <li>HAProxy deploys required full instance re-provisioning, with rollbacks taking 20+ minutes per region. I redesigned the pipeline to use atomic config-only deployments via Jenkins, pushing validated HAProxy configs without touching the underlying instances. Deploys dropped to under 2 minutes, rollbacks under 2 minutes.</li>
                                 <li>Observability was split across Splunk and Dynatrace. I migrated 100+ ECS services to a unified Dynatrace platform with Terraform-managed agents, cutting monitoring costs by 30%.</li>
                                 <li>Lambda functions were over-provisioned with no visibility into actual usage. I profiled invocation patterns and right-sized memory and timeout settings, reducing Lambda costs by 35%.</li>
                                 <li>Change tracking was scattered across Jira, Slack, and deploy logs. I built a Change Metric UI that pulls data from multiple sources into a single dashboard, giving leadership a one-stop view of what shipped, when, and its impact.</li>
@@ -278,13 +278,13 @@
                     <article class="project-card">
                         <h3 class="project-title">Zero-Touch HAProxy Deployment</h3>
                         <div class="project-story">
-                            <p><strong>Problem:</strong> HAProxy config changes required manual SSH into EC2 instances, making every rollout slow and error-prone.</p>
-                            <p><strong>Approach:</strong> I built a fully automated pipeline with GitHub Actions that validates configs, deploys to EC2, and handles cookie-based sticky sessions for traffic migration.</p>
-                            <p><strong>Result:</strong> Eliminated all manual deployment steps. rollouts went from 45 minutes of hands-on work to a single PR merge.</p>
+                            <p><strong>Problem:</strong> HAProxy changes required full instance re-provisioning. Rollbacks took 20+ minutes per region, making every config change a high-risk event.</p>
+                            <p><strong>Approach:</strong> I redesigned the deployment model to use atomic config-only pushes via Jenkins. The pipeline validates HAProxy configs against syntax and backend health checks, then deploys only the config layer without re-provisioning EC2 instances.</p>
+                            <p><strong>Result:</strong> Deploy time dropped from 20+ minutes to under 2 minutes per region. Rollbacks also under 2 minutes. Config changes went from high-risk events to routine PR merges.</p>
                         </div>
                         <ul class="project-tech-list" aria-label="Technologies used">
                             <li>HAProxy</li>
-                            <li>GitHub Actions</li>
+                            <li>Jenkins</li>
                             <li>AWS EC2</li>
                             <li>Terraform</li>
                         </ul>
