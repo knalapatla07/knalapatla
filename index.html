@@ -173,9 +173,15 @@
                             <p class="timeline-location">Minneapolis, Minnesota</p>
                             <ul>
                                 <li>AWS costs were climbing unchecked — I ran a Datadog-driven utilization audit, rightsized instances, and killed idle resources, cutting monthly spend by 25%.</li>
+                                <li>Migrated critical production workloads from ECS to EKS using phased traffic shifting — zero downtime across 30+ services, and teams got a consistent Kubernetes deployment model.</li>
+                                <li>Non-prod environments ran 24/7 at full capacity — I built scheduled scaling jobs that drop instance counts to minimum overnight and weekends, saving thousands per month.</li>
                                 <li>Recurring incidents disrupted on-call rotations — I introduced structured postmortems and permanent root-cause fixes, reducing repeat incidents by 40%.</li>
                                 <li>HAProxy changes required manual SSH and config edits — I built zero-touch rollouts on EC2 with GitHub Actions, eliminating manual deployment steps entirely.</li>
                                 <li>Observability was split across Splunk and Dynatrace — I migrated 100+ ECS services to a unified Dynatrace platform with Terraform-managed agents, cutting monitoring costs by 30%.</li>
+                                <li>Lambda functions were over-provisioned with no visibility into actual usage — I profiled invocation patterns and right-sized memory and timeout settings, reducing Lambda costs by 35%.</li>
+                                <li>Change tracking was scattered across Jira, Slack, and deploy logs — I built a Change Metric UI that pulls data from multiple sources into a single dashboard, giving leadership a one-stop view of what shipped, when, and its impact.</li>
+                                <li>Hardened edge security with Akamai WAF rules and rate limiting, reducing DDoS exposure and blocking malicious traffic before it hit origin servers.</li>
+                                <li>Partnered with product and engineering teams to align reliability goals with delivery roadmaps, balancing system stability with release velocity across quarterly planning.</li>
                             </ul>
                         </div>
                     </div>
@@ -190,6 +196,8 @@
                                 <li>Production deployments failed too often — I added pre-deploy validation, smoke tests, and automated rollback, cutting failed changes by 60%.</li>
                                 <li>Container workloads ran inconsistently across environments — I stood up EKS clusters with Helm charts, giving dev, staging, and prod identical deployment behavior.</li>
                                 <li>Release cycles took days of manual coordination — I built CI/CD pipelines with Jenkins, Docker, and Ansible that reduced cycle time from days to under an hour.</li>
+                                <li>Led an offshore DevOps team — I onboarded engineers on Jenkinsfile standards, Ansible role design, and Kubernetes operations, building the team's ability to own their own infrastructure.</li>
+                                <li>Managed AWS infrastructure across VPC, EC2, ELB, Auto Scaling Groups, and CloudFormation, keeping services reliable under production traffic.</li>
                             </ul>
                         </div>
                     </div>
@@ -203,6 +211,8 @@
                             <ul>
                                 <li>Teams had no CI/CD — I built Jenkins shared libraries and pipeline templates that standardized build, test, and deploy stages across 20+ microservices.</li>
                                 <li>Deployments caused downtime — I introduced Docker-based blue/green deployments with health checks, achieving zero-downtime releases for all critical services.</li>
+                                <li>Designed AWS architectures using EC2, S3, RDS, Lambda, CloudFront, and Route 53 to support the company's growing application portfolio.</li>
+                                <li>Managed distributed database platforms including Oracle, MySQL, MongoDB, and DynamoDB — built backup/restore runbooks that improved recovery readiness across all data stores.</li>
                             </ul>
                         </div>
                     </div>
