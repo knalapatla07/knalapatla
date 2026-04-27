@@ -109,7 +109,7 @@
                         <p>Three years ago, a single misconfigured load balancer took down checkout for 200,000 customers during a flash sale. I was the one paged at 2 AM, and by morning I had not only fixed the issue but built the automated health check that made sure it never happened again.</p>
                         <p>That incident captures how I work. I run reliability for services at Chewy that handle millions of requests every day. I lead cross-functional initiatives to cut incidents, drive platform standards, and still write Terraform and debug production with my own hands.</p>
                         <p>Before Chewy, I helped Best Buy scale their container platform across EKS and built CI/CD pipelines from scratch at ValourUSA. Each role taught me that the best infrastructure is the kind nobody notices because it just works.</p>
-                        <p>Right now I'm deep into AIOps — I built a RAG-based assistant that reviews HAProxy pull requests against internal standards. I believe the next shift in operations is AI-assisted incident triage, and I want to be the one building it.</p>
+                        <p>Right now I'm deep into AIOps. I built a RAG-based assistant that reviews HAProxy pull requests against internal standards. I believe the next shift in operations is AI-assisted incident triage, and I want to be the one building it.</p>
                     </div>
                     <div class="about-image">
                         <div class="image-wrapper">
@@ -172,14 +172,14 @@
                             <h3><span>Senior Site Reliability Engineer</span> <span class="company">@ Chewy Inc</span></h3>
                             <p class="timeline-location">Minneapolis, Minnesota</p>
                             <ul>
-                                <li>AWS costs were climbing unchecked — I ran a Datadog-driven utilization audit, rightsized instances, and killed idle resources, cutting monthly spend by 25%.</li>
-                                <li>Migrated critical production workloads from ECS to EKS using phased traffic shifting — zero downtime across 30+ services, and teams got a consistent Kubernetes deployment model.</li>
-                                <li>Non-prod environments ran 24/7 at full capacity — I built scheduled scaling jobs that drop instance counts to minimum overnight and weekends, saving thousands per month.</li>
-                                <li>Recurring incidents disrupted on-call rotations — I introduced structured postmortems and permanent root-cause fixes, reducing repeat incidents by 40%.</li>
-                                <li>HAProxy changes required manual SSH and config edits — I built zero-touch rollouts on EC2 with GitHub Actions, eliminating manual deployment steps entirely.</li>
-                                <li>Observability was split across Splunk and Dynatrace — I migrated 100+ ECS services to a unified Dynatrace platform with Terraform-managed agents, cutting monitoring costs by 30%.</li>
-                                <li>Lambda functions were over-provisioned with no visibility into actual usage — I profiled invocation patterns and right-sized memory and timeout settings, reducing Lambda costs by 35%.</li>
-                                <li>Change tracking was scattered across Jira, Slack, and deploy logs — I built a Change Metric UI that pulls data from multiple sources into a single dashboard, giving leadership a one-stop view of what shipped, when, and its impact.</li>
+                                <li>AWS costs were climbing unchecked. I ran a Datadog-driven utilization audit, rightsized instances, and killed idle resources, cutting monthly spend by 25%.</li>
+                                <li>Migrated critical production workloads from ECS to EKS using phased traffic shifting. zero downtime across 30+ services, and teams got a consistent Kubernetes deployment model.</li>
+                                <li>Non-prod environments ran 24/7 at full capacity. I built scheduled scaling jobs that drop instance counts to minimum overnight and weekends, saving thousands per month.</li>
+                                <li>Recurring incidents disrupted on-call rotations. I introduced structured postmortems and permanent root-cause fixes, reducing repeat incidents by 40%.</li>
+                                <li>HAProxy rollouts took 45 minutes of manual SSH and config edits per change. I built a GitHub Actions pipeline that validates configs, deploys to EC2, and handles cookie-based sticky sessions, turning each rollout into a single PR merge.</li>
+                                <li>Observability was split across Splunk and Dynatrace. I migrated 100+ ECS services to a unified Dynatrace platform with Terraform-managed agents, cutting monitoring costs by 30%.</li>
+                                <li>Lambda functions were over-provisioned with no visibility into actual usage. I profiled invocation patterns and right-sized memory and timeout settings, reducing Lambda costs by 35%.</li>
+                                <li>Change tracking was scattered across Jira, Slack, and deploy logs. I built a Change Metric UI that pulls data from multiple sources into a single dashboard, giving leadership a one-stop view of what shipped, when, and its impact.</li>
                                 <li>Hardened edge security with Akamai WAF rules and rate limiting, reducing DDoS exposure and blocking malicious traffic before it hit origin servers.</li>
                                 <li>Partnered with product and engineering teams to align reliability goals with delivery roadmaps, balancing system stability with release velocity across quarterly planning.</li>
                             </ul>
@@ -193,10 +193,10 @@
                             <h3><span>Sr. DevOps Engineer</span> <span class="company">@ BestBuy</span></h3>
                             <p class="timeline-location">Minneapolis, Minnesota</p>
                             <ul>
-                                <li>Production deployments failed too often — I added pre-deploy validation, smoke tests, and automated rollback, cutting failed changes by 60%.</li>
-                                <li>Container workloads ran inconsistently across environments — I stood up EKS clusters with Helm charts, giving dev, staging, and prod identical deployment behavior.</li>
-                                <li>Release cycles took days of manual coordination — I built CI/CD pipelines with Jenkins, Docker, and Ansible that reduced cycle time from days to under an hour.</li>
-                                <li>Led an offshore DevOps team — I onboarded engineers on Jenkinsfile standards, Ansible role design, and Kubernetes operations, building the team's ability to own their own infrastructure.</li>
+                                <li>Production deployments failed too often. I added pre-deploy validation, smoke tests, and automated rollback, cutting failed changes by 60%.</li>
+                                <li>Container workloads ran inconsistently across environments. I stood up EKS clusters with Helm charts, giving dev, staging, and prod identical deployment behavior.</li>
+                                <li>Release cycles took days of manual coordination. I built CI/CD pipelines with Jenkins, Docker, and Ansible that reduced cycle time from days to under an hour.</li>
+                                <li>Led an offshore DevOps team. I onboarded engineers on Jenkinsfile standards, Ansible role design, and Kubernetes operations, building the team's ability to own their own infrastructure.</li>
                                 <li>Managed AWS infrastructure across VPC, EC2, ELB, Auto Scaling Groups, and CloudFormation, keeping services reliable under production traffic.</li>
                             </ul>
                         </div>
@@ -209,10 +209,10 @@
                             <h3><span>Sr. DevOps Engineer</span> <span class="company">@ ValourUSA</span></h3>
                             <p class="timeline-location">Irving, Texas</p>
                             <ul>
-                                <li>Teams had no CI/CD — I built Jenkins shared libraries and pipeline templates that standardized build, test, and deploy stages across 20+ microservices.</li>
-                                <li>Deployments caused downtime — I introduced Docker-based blue/green deployments with health checks, achieving zero-downtime releases for all critical services.</li>
+                                <li>Teams had no CI/CD. I built Jenkins shared libraries and pipeline templates that standardized build, test, and deploy stages across 20+ microservices.</li>
+                                <li>Deployments caused downtime. I introduced Docker-based blue/green deployments with health checks, achieving zero-downtime releases for all critical services.</li>
                                 <li>Designed AWS architectures using EC2, S3, RDS, Lambda, CloudFront, and Route 53 to support the company's growing application portfolio.</li>
-                                <li>Managed distributed database platforms including Oracle, MySQL, MongoDB, and DynamoDB — built backup/restore runbooks that improved recovery readiness across all data stores.</li>
+                                <li>Managed distributed database platforms including Oracle, MySQL, MongoDB, and DynamoDB. built backup/restore runbooks that improved recovery readiness across all data stores.</li>
                             </ul>
                         </div>
                     </div>
@@ -224,7 +224,7 @@
                 <div class="thinking-grid">
                     <article class="thinking-item">
                         <h3>AIOps is the next SRE multiplier</h3>
-                        <p>I built a RAG-based assistant that reviews HAProxy pull requests against our internal standards and flags config risks before a human even looks at the diff. The next step is AI-assisted incident triage — correlating alerts, logs, and recent deploys to surface probable root causes in seconds instead of minutes. I think the SRE who learns to build these tools will be worth five who don't.</p>
+                        <p>I built a RAG-based assistant that reviews HAProxy pull requests against our internal standards and flags config risks before a human even looks at the diff. The next step is AI-assisted incident triage. correlating alerts, logs, and recent deploys to surface probable root causes in seconds instead of minutes. I think the SRE who learns to build these tools will be worth five who don't.</p>
                     </article>
                     <article class="thinking-item">
                         <h3>Platform engineering will replace traditional ops</h3>
@@ -232,7 +232,7 @@
                     </article>
                     <article class="thinking-item">
                         <h3>Observability needs a standard, not more dashboards</h3>
-                        <p>Most teams I've worked with have three monitoring tools and still can't answer "why is this slow?" in under ten minutes. OpenTelemetry is the right bet — one instrumentation layer, any backend. I'm migrating services to OTel now because vendor-neutral telemetry is the only way to keep observability costs from eating your infrastructure budget.</p>
+                        <p>Most teams I've worked with have three monitoring tools and still can't answer "why is this slow?" in under ten minutes. OpenTelemetry is the right bet. one instrumentation layer, any backend. I'm migrating services to OTel now because vendor-neutral telemetry is the only way to keep observability costs from eating your infrastructure budget.</p>
                     </article>
                 </div>
             </section>
@@ -263,7 +263,7 @@
                     <article class="project-card">
                         <h3 class="project-title">AWS Cost Optimization</h3>
                         <div class="project-story">
-                            <p><strong>Problem:</strong> AWS spend was climbing quarter over quarter with no visibility into what was driving costs — CloudWatch alone cost ~$50k/quarter.</p>
+                            <p><strong>Problem:</strong> AWS spend was climbing quarter over quarter with no visibility into what was driving costs. CloudWatch alone cost ~$50k/quarter.</p>
                             <p><strong>Approach:</strong> I ran a Datadog-driven utilization audit, rightsized instances, killed idle resources, and re-architected log routing with Lambda-based automation and smarter retention policies.</p>
                             <p><strong>Result:</strong> Cut monthly AWS spend by 25% overall and reduced CloudWatch costs from ~$50k/quarter to ~$90k/year.</p>
                         </div>
@@ -280,7 +280,7 @@
                         <div class="project-story">
                             <p><strong>Problem:</strong> HAProxy config changes required manual SSH into EC2 instances, making every rollout slow and error-prone.</p>
                             <p><strong>Approach:</strong> I built a fully automated pipeline with GitHub Actions that validates configs, deploys to EC2, and handles cookie-based sticky sessions for traffic migration.</p>
-                            <p><strong>Result:</strong> Eliminated all manual deployment steps — rollouts went from 45 minutes of hands-on work to a single PR merge.</p>
+                            <p><strong>Result:</strong> Eliminated all manual deployment steps. rollouts went from 45 minutes of hands-on work to a single PR merge.</p>
                         </div>
                         <ul class="project-tech-list" aria-label="Technologies used">
                             <li>HAProxy</li>
@@ -323,7 +323,7 @@
                     <article class="project-card">
                         <h3 class="project-title">RAG-based PR Review Assistant</h3>
                         <div class="project-story">
-                            <p><strong>Problem:</strong> HAProxy pull requests were reviewed inconsistently — reviewers missed config risks because internal standards lived in scattered docs and tribal knowledge.</p>
+                            <p><strong>Problem:</strong> HAProxy pull requests were reviewed inconsistently. reviewers missed config risks because internal standards lived in scattered docs and tribal knowledge.</p>
                             <p><strong>Approach:</strong> I built a RAG-based GPT assistant that ingests our internal standards and runbooks, then reviews every HAProxy PR against those docs automatically.</p>
                             <p><strong>Result:</strong> Review time dropped by 40%, config-related incidents fell to near zero, and new team members onboard to HAProxy reviews in days instead of weeks.</p>
                         </div>
@@ -382,7 +382,7 @@
             <section id="contact" class="section-container contact-section">
                  <h2 class="section-title-contact">Let's Talk</h2>
                  <h3 class="contact-heading">I'm looking for my next role</h3>
-                 <p>I'm interested in Staff IC or Engineering Manager positions on SRE and Platform teams. If your team needs someone who can lead reliability efforts, build internal platforms, and still write the Terraform — I'd like to hear about it.</p>
+                 <p>I'm interested in Staff IC or Engineering Manager positions on SRE and Platform teams. If your team needs someone who can lead reliability efforts, build internal platforms, and still write the Terraform. I'd like to hear about it.</p>
                  <div class="contact-actions">
                      <a href="mailto:karthikrn27@gmail.com?subject=Interview%20%3A%20%5BRole%5D%20-%20%5BCompany%5D" class="btn-primary">Email Me</a>
                      <a href="https://calendly.com/karthikrn27/15min" class="btn-primary" target="_blank" rel="noopener noreferrer">Schedule a 15-min Call</a>
